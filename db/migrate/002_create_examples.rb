@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'deck'
+
 class CreateExamples < ActiveRecord::Migration[5.1]
   def change
     create_table :examples do |t|
