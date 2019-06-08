@@ -11,3 +11,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email: 'a@a', password: 'a', password_confirmation: 'a')
+Game.create(user_id: 1)
