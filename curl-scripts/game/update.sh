@@ -1,14 +1,9 @@
 #!/bin/bash
 
-curl "http://localhost:4741/games/${ID}" \
+curl "http://localhost:4741/games/1" \
   --include \
-  --request PATCH \
+  --request PUT \
   --header "Content-Type: application/json" \
-  --data '{
-    "game": {
-      "player_one_hand": "'"${HAND}"'",
-      "current_cards": "'"${CURRENT}"'"
-    }
-  }'
+  --data "@update.json"
 
 echo

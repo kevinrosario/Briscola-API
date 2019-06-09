@@ -49,8 +49,10 @@ class GamesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def game_params
-    params.require(:game).permit(:user_id, :deck, :briscola, :player_one_hand,
+    params.require(:game).permit(:user_id, :deck, :briscola,
+                                 { player_one_hand: %i[suit rank point_value] },
+                                 { current_cards: %i[suit rank point_value] },
                                  :player_two_hand, :player_one_earned,
-                                 :player_two_earned, :current_cards, :over)
+                                 :player_two_earned, :over)
   end
 end
