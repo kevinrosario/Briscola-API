@@ -1,10 +1,10 @@
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
-ETag: W/"548c339690e7c2154f04db9c7c22be98"
+ETag: W/"fe7d2a755a25c96906c01a5da0cbeec2"
 Cache-Control: max-age=0, private, must-revalidate
-X-Request-Id: 7433687a-6a4a-4d7d-b3ae-e3d612e4e265
-X-Runtime: 0.012801
+X-Request-Id: ed8ec8dc-7958-4496-8e40-422f138d82b5
+X-Runtime: 0.004220
 Vary: Origin
 Transfer-Encoding: chunked
 
-{"games":[{"id":1,"briscola":{"suit":"SPADE","rank":"7","point_value":0},"player_one_hand":[{"suit":"CLUB","rank":"KING","point_value":4},{"suit":"CLUB","rank":"4","point_value":0},{"suit":"SUN","rank":"6","point_value":0}],"current_cards":[],"over":false,"user":{"id":1,"email":"a@a"}}]}
+{"games":[{"id":1,"briscola":{"suit":"SPADE","rank":"3","point_value":10},"player_one_hand":[],"player_two_hand":[{"suit":"SUN","rank":"KNIGHT","point_value":3},{"suit":"CUP","rank":"3","point_value":10},{"suit":"SUN","rank":"ACE","point_value":11}],"current_cards":[],"player_one_earned":[],"player_two_earned":[],"deck":[{"suit":"CUP","rank":"JACK","point_value":2},{"suit":"CUP","rank":"2","point_value":0},{"suit":"SPADE","rank":"KNIGHT","point_value":3},{"suit":"CLUB","rank":"6","point_value":0},{"suit":"SUN","rank":"6","point_value":0},{"suit":"CUP","rank":"5","point_value":0},{"suit":"CUP","rank":"7","point_value":0},{"suit":"CLUB","rank":"3","point_value":10},{"suit":"CLUB","rank":"5","point_value":0},{"suit":"CLUB","rank":"4","point_value":0},{"suit":"SUN","rank":"4","point_value":0},{"suit":"SUN","rank":"5","point_value":0},{"suit":"CUP","rank":"KNIGHT","point_value":3},{"suit":"SUN","rank":"7","point_value":0},{"suit":"CUP","rank":"ACE","point_value":11},{"suit":"SPADE","rank":"JACK","point_value":2},{"suit":"CUP","rank":"6","point_value":0},{"suit":"SPADE","rank":"6","point_value":0},{"suit":"SUN","rank":"2","point_value":0},{"suit":"CLUB","rank":"KNIGHT","point_value":3},{"suit":"SPADE","rank":"4","point_value":0},{"suit":"SUN","rank":"KING","point_value":4},{"suit":"SUN","rank":"JACK","point_value":2},{"suit":"CLUB","rank":"7","point_value":0},{"suit":"SPADE","rank":"7","point_value":0},{"suit":"SUN","rank":"3","point_value":10},{"suit":"CLUB","rank":"KING","point_value":4},{"suit":"CUP","rank":"4","point_value":0},{"suit":"CUP","rank":"KING","point_value":4},{"suit":"SPADE","rank":"ACE","point_value":11},{"suit":"SPADE","rank":"5","point_value":0},{"suit":"CLUB","rank":"2","point_value":0},{"suit":"SPADE","rank":"2","point_value":0}],"user":{"id":1,"email":"a@a"}}]}

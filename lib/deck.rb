@@ -48,6 +48,6 @@ class Deck
     3.times do
       hand << draw
     end
-    return hand
+    hand
   end
 end

@@ -1,1 +1,1 @@
-{"game":{"player_one_hand":[{"suit":"SUN","rank":"KING","point_value":4},{"suit":"CUP","rank":"4","point_value":0}],"current_cards":[{"suit":"CLUB","rank":"6","point_value":0}]}}
+{"game":{"player_one_hand":[{"suit":"CLUB","rank":"ACE","point_value":11},{"suit":"CUP","rank":"JACK","point_value":2}],"current_cards":[{"suit":"SPADE","rank":"KNIGHT","point_value":3}]}}

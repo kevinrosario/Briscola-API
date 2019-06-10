@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'forwardable'
-
 # Representation of each card
 class Card
   include Comparable
@@ -23,12 +21,11 @@ class Card
 
   def <=>(other)
     unless other.nil?
-      if suit == other.suit && point_value < other.point_value
-        other
-      elsif suit == other.suit && RANKS.index(rank) < RANKS.index(other.rank)
-        other
+      if suit == other.suit && (point_value < other.point_value ||
+                                RANKS.index(rank) < RANKS.index(other.rank))
+        -1
       else
-        self
+        1
       end
     end
   end

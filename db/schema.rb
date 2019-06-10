@@ -25,13 +25,13 @@ ActiveRecord::Schema.define(version: 2019_06_07_170325) do
 
   create_table "games", force: :cascade do |t|
     t.bigint "user_id"
-    t.json "deck"
+    t.json "deck", array: true
     t.json "briscola"
     t.json "player_one_hand", array: true
-    t.json "player_two_hand"
-    t.json "player_one_earned"
-    t.json "player_two_earned"
-    t.json "current_cards"
+    t.json "player_two_hand", array: true
+    t.json "player_one_earned", array: true
+    t.json "player_two_earned", array: true
+    t.json "current_cards", array: true
     t.boolean "over", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
