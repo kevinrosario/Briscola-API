@@ -5,7 +5,8 @@ require_relative 'card'
 # Algorithm to choose the best available card
 class ComputerPlayer
   attr_accessor :hand, :user_selection, :computer_selection, :briscola
-  def initialize(hand)
+  def initialize(hand, briscola)
+    @briscola = briscola
     @hand = hand.map do |card|
       Card.new(card['suit'], card['rank'],
                card['point_value'])

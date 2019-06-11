@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:4741/games" \
+curl "https://briscola-api.herokuapp.com/games" \
   --include \
   --request GET \
   --header "Content-Type: application/json" \

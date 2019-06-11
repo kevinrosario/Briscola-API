@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class GamesController < ApplicationController
+class GamesController < OpenReadController
   before_action :set_game, only: %i[show update destroy]
 
   # GET /games
@@ -17,7 +17,7 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    @game = Game.new(game_params)
+    @game = current_user.games.build
 
     if @game.save
       render json: @game, status: :created, location: @game
@@ -44,12 +44,13 @@ class GamesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_game
-    @game = Game.find(params[:id])
+    @game = current_user.games.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.
   def game_params
     params.require(:game).permit(:user_id, :deck, :briscola,
+                                 # :player_one_hand, :current_cards,
                                  { player_one_hand: %i[suit rank point_value] },
                                  { current_cards: %i[suit rank point_value] },
                                  :player_two_hand, :player_one_earned,
