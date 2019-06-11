@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_170325) do
   create_table "games", force: :cascade do |t|
     t.bigint "user_id"
     t.string "deck"
-    t.string "briscola"
+    t.json "briscola"
     t.string "player_one_hand"
     t.string "player_two_hand"
     t.string "player_one_earned"

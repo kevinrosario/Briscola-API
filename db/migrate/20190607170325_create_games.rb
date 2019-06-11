@@ -6,7 +6,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
     create_table :games do |t|
       t.references :user, foreign_key: true
       t.string :deck
-      t.string :briscola
+      t.json :briscola
       t.string :player_one_hand
       t.string :player_two_hand
       t.string :player_one_earned

@@ -7,7 +7,7 @@ class Game < ApplicationRecord
   belongs_to :user
   before_create :default_values
   before_update :play
-  serialize :briscola, JSON
+  # serialize :briscola, JSON
   serialize :player_one_hand, JSON
   serialize :player_two_hand, JSON
   serialize :player_one_earned, JSON
