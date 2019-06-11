@@ -7,13 +7,6 @@ class Game < ApplicationRecord
   belongs_to :user
   before_create :default_values
   before_update :play
-  # serialize :briscola, JSON
-  serialize :player_one_hand, JSON
-  serialize :player_two_hand, JSON
-  serialize :player_one_earned, JSON
-  serialize :player_two_earned, JSON
-  serialize :current_cards, JSON
-  serialize :deck, JSON
 
   def default_values
     deck = Deck.new
