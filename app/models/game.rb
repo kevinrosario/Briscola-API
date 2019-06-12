@@ -26,21 +26,22 @@ class Game < ApplicationRecord
       user_selection = first_current_card
       computer_selection = computer.after_user
       delete_from_hand(player_two_hand, computer_selection)
-    else # computer played first
+    elsif current_cards.length == 2 # computer played first
       computer_selection = first_current_card
       user_selection = second_current_card
     end
     current_cards.clear
     draw
     compare(user_selection, computer_selection, computer)
+    self.over = true if player_one_hand.empty?
   end
 
   def compare(player_card, computer_card, computer)
     if (player_card <=> computer_card) == 1 # player wins
       add_to_earned(player_one_earned, player_card, computer_card)
-    else # computer wins
+    elsif (player_card <=> computer_card) == -1 # computer wins
       add_to_earned(player_two_earned, player_card, computer_card)
-      computer_selection = computer.before_user
+      computer_selection = computer.before_user # computer selects a card first
       current_cards << computer_selection
       delete_from_hand(player_two_hand, computer_selection)
     end
@@ -50,22 +51,26 @@ class Game < ApplicationRecord
     if deck.length > 1
       player_one_hand.push(deck.shift)
       player_two_hand.push(deck.shift)
-    elsif deck.length == 1
+    elsif deck.length == 1 # draw last card in deck and add briscola
       player_one_hand.push(deck.shift)
       player_two_hand.push(briscola)
     end
   end
 
   def first_current_card
-    Card.new(current_cards[0]['suit'],
-             current_cards[0]['rank'],
-             current_cards[0]['point_value'])
+    if !current_cards.empty?
+      Card.new(current_cards[0]['suit'],
+               current_cards[0]['rank'],
+               current_cards[0]['point_value'])
+    end
   end
 
   def second_current_card
-    Card.new(current_cards[1]['suit'],
-             current_cards[1]['rank'],
-             current_cards[1]['point_value'])
+    if !current_cards.empty?
+      Card.new(current_cards[1]['suit'],
+               current_cards[1]['rank'],
+               current_cards[1]['point_value'])
+    end
   end
 
   def delete_from_hand(hand, card)
