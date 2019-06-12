@@ -54,6 +54,7 @@ class GamesController < ProtectedController
                                  { player_one_hand: %i[suit rank point_value] },
                                  { current_cards: %i[suit rank point_value] },
                                  :player_two_hand, :player_one_earned,
-                                 :player_two_earned, :over)
+                                 :player_two_earned, :player_two_last_selection,
+                                 :over)
   end
 end

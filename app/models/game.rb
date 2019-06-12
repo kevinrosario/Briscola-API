@@ -7,6 +7,14 @@ class Game < ApplicationRecord
   belongs_to :user
   before_create :default_values
   before_update :play
+  serialize :briscola, JSON
+  serialize :player_one_hand, JSON
+  serialize :player_two_hand, JSON
+  serialize :player_one_earned, JSON
+  serialize :player_two_earned, JSON
+  serialize :current_cards, JSON
+  serialize :player_two_last_selection, JSON
+  serialize :deck, JSON
 
   def default_values
     deck = Deck.new
@@ -16,35 +24,56 @@ class Game < ApplicationRecord
     self.player_two_hand = deck.deal
     self.player_one_earned = []
     self.player_two_earned = []
+    self.player_two_last_selection = []
     self.current_cards = []
     self.deck = deck.deck
   end
 
   def play
     computer = ComputerPlayer.new(player_two_hand, briscola)
+    player_two_last_selection.clear
     if current_cards.length == 1 # user already played a card
       user_selection = first_current_card
       computer_selection = computer.after_user
+      player_two_last_selection << computer_selection
       delete_from_hand(player_two_hand, computer_selection)
-    elsif current_cards.length == 2 # computer played first
+      compare_user_first(user_selection, computer_selection, computer)
+    else # computer played first
       computer_selection = first_current_card
       user_selection = second_current_card
+      compare_user_second(user_selection, computer_selection, computer)
     end
-    current_cards.clear
     draw
-    compare(user_selection, computer_selection, computer)
     self.over = true if player_one_hand.empty?
   end
 
-  def compare(player_card, computer_card, computer)
-    if (player_card <=> computer_card) == 1 # player wins
-      add_to_earned(player_one_earned, player_card, computer_card)
-    elsif (player_card <=> computer_card) == -1 # computer wins
-      add_to_earned(player_two_earned, player_card, computer_card)
-      computer_selection = computer.before_user # computer selects a card first
-      current_cards << computer_selection
-      delete_from_hand(player_two_hand, computer_selection)
+  def compare_user_first(user_selection, computer_selection, computer)
+    if (user_selection <=> computer_selection) == 1 &&
+       computer_selection.suit != briscola['suit'] # player wins
+      add_to_earned(player_one_earned, user_selection, computer_selection)
+      current_cards.clear
+    else # computer wins
+      add_to_earned(player_two_earned, user_selection, computer_selection)
+      add_computer_selection(computer)
     end
+  end
+
+  def compare_user_second(user_selection, computer_selection, computer)
+    if (computer_selection <=> user_selection) == 1 &&
+       user_selection.suit != briscola['suit'] # computer wins
+      add_to_earned(player_two_earned, user_selection, computer_selection)
+      add_computer_selection(computer)
+    else # user wins
+      add_to_earned(player_one_earned, user_selection, computer_selection)
+      current_cards.clear
+    end
+  end
+
+  def add_computer_selection(computer)
+    current_cards.clear
+    computer_selection = computer.before_user
+    current_cards << computer_selection
+    delete_from_hand(player_two_hand, computer_selection)
   end
 
   def draw
