@@ -11,4 +11,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.create(email: 'a@a', password: 'a', password_confirmation: 'a')
+User.create(email: 'b@b', password: 'b', password_confirmation: 'b')
 Game.create(user_id: 1)
+Game.create(user_id: 2)
+Game.create(user_id: 1)
+Game.create(user_id: 2)

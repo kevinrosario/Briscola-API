@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_170325) do
     t.string "player_one_earned"
     t.string "player_two_earned"
     t.string "current_cards"
+    t.string "player_two_last_selection"
     t.boolean "over", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

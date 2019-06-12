@@ -5,7 +5,7 @@ class GamesController < OpenReadController
 
   # GET /games
   def index
-    @games = Game.all
+    @games = current_user.games.all
 
     render json: @games
   end
@@ -54,6 +54,7 @@ class GamesController < OpenReadController
                                  { player_one_hand: %i[suit rank point_value] },
                                  { current_cards: %i[suit rank point_value] },
                                  :player_two_hand, :player_one_earned,
-                                 :player_two_earned, :over)
+                                 :player_two_earned, :player_two_last_selection,
+                                 :over)
   end
 end

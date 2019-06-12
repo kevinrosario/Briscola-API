@@ -12,6 +12,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.string :player_one_earned
       t.string :player_two_earned
       t.string :current_cards
+      t.string :player_two_last_selection
       t.boolean :over, null: false, default: false
 
       t.timestamps
