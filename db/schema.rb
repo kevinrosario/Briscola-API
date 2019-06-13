@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(version: 2019_06_07_170325) do
 
   create_table "games", force: :cascade do |t|
     t.bigint "user_id"
-<<<<<<< HEAD
-    t.json "deck"
-    t.json "briscola"
-    t.json "player_one_hand"
-    t.json "player_two_hand"
-    t.json "player_one_earned"
-    t.json "player_two_earned"
-    t.json "current_cards"
-=======
     t.string "deck"
     t.string "briscola"
     t.string "player_one_hand"
@@ -42,7 +33,6 @@ ActiveRecord::Schema.define(version: 2019_06_07_170325) do
     t.string "player_two_earned"
     t.string "current_cards"
     t.string "player_two_last_selection"
->>>>>>> development
     t.boolean "over", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
