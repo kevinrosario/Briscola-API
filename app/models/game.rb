@@ -37,11 +37,11 @@ class Game < ApplicationRecord
       computer_selection = computer.after_user
       player_two_last_selection << computer_selection
       delete_from_hand(player_two_hand, computer_selection)
-      compare_user_first(user_selection, computer_selection, computer)
+      compare_user_second(user_selection, computer_selection, computer)
     else # computer played first
       computer_selection = first_current_card
       user_selection = second_current_card
-      compare_user_second(user_selection, computer_selection, computer)
+      compare_user_first(user_selection, computer_selection, computer)
     end
     draw
     self.over = true if player_one_hand.empty?
@@ -49,7 +49,7 @@ class Game < ApplicationRecord
 
   def compare_user_first(user_selection, computer_selection, computer)
     if (user_selection <=> computer_selection) == 1 &&
-       computer_selection.suit != briscola['suit'] # player wins
+        # computer_selection.suit != briscola['suit'] # player wins
       add_to_earned(player_one_earned, user_selection, computer_selection)
       current_cards.clear
     else # computer wins
@@ -60,7 +60,7 @@ class Game < ApplicationRecord
 
   def compare_user_second(user_selection, computer_selection, computer)
     if (computer_selection <=> user_selection) == 1 &&
-       user_selection.suit != briscola['suit'] # computer wins
+       # user_selection.suit == briscola['suit'] # computer wins
       add_to_earned(player_two_earned, user_selection, computer_selection)
       add_computer_selection(computer)
     else # user wins

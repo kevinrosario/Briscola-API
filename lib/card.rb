@@ -21,11 +21,11 @@ class Card
 
   def <=>(other)
     unless other.nil?
-      if suit == other.suit && (point_value > other.point_value ||
-                                RANKS.index(rank) > RANKS.index(other.rank))
-        1 # this card is wins
-      else
+      if suit == other.suit && (point_value < other.point_value ||
+                                RANKS.index(rank) < RANKS.index(other.rank))
         -1 # other card wins
+      else
+        1 # this card wins
       end
     end
   end
